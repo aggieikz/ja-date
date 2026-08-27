@@ -666,6 +666,9 @@ body {
 
 /* ============ Låseskjerm ============ */
 
+/* Mens låseskjermen er oppe: siden bak skal ikke kunne røres */
+body.lock-active { overflow: hidden; }
+
 .lockscreen {
   position: fixed;
   inset: 0;
@@ -673,7 +676,10 @@ body {
   display: grid;
   place-items: center;
   padding: 24px;
-  overflow: hidden;
+  overflow-x: hidden;
+  overflow-y: auto;
+  touch-action: pan-y;
+  overscroll-behavior: contain;
   background:
     radial-gradient(1100px 560px at 80% -10%, rgba(233, 196, 106, 0.22), transparent 60%),
     radial-gradient(820px 480px at -10% 22%, rgba(192, 57, 91, 0.10), transparent 60%),
@@ -694,7 +700,7 @@ body {
   position: relative;
   z-index: 1;
   max-width: 560px;
-  margin: 0 auto;
+  margin: auto; /* sentrerer, og lar låseskjermen scrolle selv om innholdet er for høyt */
   text-align: center;
 }
 

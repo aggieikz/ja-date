@@ -199,7 +199,7 @@
 
   // ============ Låseskjerm til dagen ============
   const LOCK_KEY = "date-lockscreen-entered-v1";
-  const DATE_START = new Date(2026, 7, 27, 0, 0, 0).getTime(); // dagen: 29. august
+  const DATE_START = new Date(2026, 7, 27, 0, 0, 0).getTime(); // dagen: 27. august
   const lockEl = document.getElementById("lockscreen");
   const lockSub = document.getElementById("lock-sub");
   const lockGrid = document.getElementById("lock-grid");
@@ -215,6 +215,7 @@
     if (!lockEl) return;
     let entered = false;
     try { entered = localStorage.getItem(LOCK_KEY) === "1"; } catch (e) { /* privat modus */ }
+    document.body.classList.toggle("lock-active", !entered);
     if (entered) {
       lockEl.classList.add("hide");
       lockEl.setAttribute("aria-hidden", "true");
@@ -322,7 +323,9 @@
     "Rompa di er favoritt bouncen min, og jeg elsker trampoliner",
     "Love you bunny",
     "Du er den deiligste prinsessa",
-    "Elsker å se deg i øynene"
+    "Elsker å se deg i øynene",
+    "Du er perfekt",
+    "promping er gøyere med deg"
   ];
   const klemmeBtn = document.getElementById("klemme-btn");
   const klemmeLayer = document.getElementById("klemme-layer");
@@ -342,9 +345,7 @@
     const el = document.createElement("p");
     el.className = "klemme";
     const dur = 6 + Math.random() * 3;
-    el.style.left = (12 + Math.random() * 70) + "%";
     el.style.setProperty("--dur", dur.toFixed(2) + "s");
-    el.style.setProperty("--dx", Math.round(Math.random() * 120 - 60) + "px");
     el.style.setProperty("--r0", (Math.random() * 10 - 5).toFixed(1) + "deg");
     el.style.setProperty("--r1", (Math.random() * 24 - 12).toFixed(1) + "deg");
     const heart = document.createElement("span");
@@ -353,6 +354,19 @@
     el.appendChild(heart);
     el.appendChild(document.createTextNode(" " + COMPLIMENTS[i]));
     klemmeLayer.appendChild(el);
+    // Målt bredde først, så plasseres den garantert inni skjermen
+    const half = el.offsetWidth / 2;
+    const pad = 8;
+    const minX = half + pad;
+    const maxX = window.innerWidth - half - pad;
+    const x = minX + Math.random() * Math.max(0, maxX - minX);
+    el.style.left = x + "px";
+    // Drift som også holder seg inni skjermen til animasjonen er ferdig
+    const dxMin = minX - x;
+    const dxMax = maxX - x;
+    let dx = dxMin + Math.random() * (dxMax - dxMin);
+    dx = Math.max(-80, Math.min(80, dx));
+    el.style.setProperty("--dx", Math.round(dx) + "px");
     const clean = () => { if (el.isConnected) el.remove(); };
     el.addEventListener("animationend", clean);
     setTimeout(clean, (dur + 1.2) * 1000); // sikkerhetsnett dersom animasjonen ikke fyller
