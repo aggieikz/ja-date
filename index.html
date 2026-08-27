@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="nb">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#FBF2E4">
+<title>Din dag, pakket inn 🎁</title>
+<meta name="description" content="En hel dag pakket inn i gaver – kun for deg.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='0.9em' font-size='90'>🎁</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;600&family=Nunito+Sans:wght@400;600;700&family=Parisienne&family=Playfair+Display:ital,wght@0,500;0,600;1,500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header class="hero">
+  <div class="hearts" aria-hidden="true">
+    <span style="left:6%; animation-delay:-2s; font-size:18px">♥</span>
+    <span style="left:22%; animation-delay:-7s; font-size:14px">♥</span>
+    <span style="left:38%; animation-delay:-4s; font-size:22px">♥</span>
+    <span style="left:55%; animation-delay:-9s; font-size:16px">♥</span>
+    <span style="left:70%; animation-delay:-1s; font-size:20px">♥</span>
+    <span style="left:84%; animation-delay:-6s; font-size:14px">♥</span>
+    <span style="left:94%; animation-delay:-3.5s; font-size:18px">♥</span>
+  </div>
+  <div class="hero-inner">
+    <p class="eyebrow">En fin dag · <span id="datoen">…</span></p>
+    <h1>Kjære <span class="script">Josefine</span>,<br>en hel dag <span class="script">pakket inn</span></h1>
+    <p class="lead">Jeg har planlagt hele dagen for oss. Fem gaver, én dag, null stress. Hver gave låser seg opp av seg selv når klokka slår – så du trenger bare å holde ut.</p>
+    <div class="hero-foot">
+      <span class="progress" id="progress">0 av 5 gaver åpnet</span>
+    </div>
+  </div>
+  <a class="scroll-cue" href="#gaver" tabindex="-1" aria-hidden="true">▼</a>
+</header>
+
+<main class="gifts" id="gaver">
+  <p class="gifts-hint">🎀 Trykk på gavene når tiden er inne</p>
+
+  <section class="gift" id="gift-frokost" data-start="10:00" data-locked-msg="Ikke ennå! Den åpnes kl. 10:00">
+    <button class="gift-box" type="button" aria-expanded="false">
+      <div class="content">
+        <header class="content-head">
+          <div class="meta-chips">
+            <span class="time-chip">10:00 – 13:00</span>
+            <span class="dress-chip">👕 Antrekk: den fine pyjamasen</span>
+          </div>
+          <h2>Frokost i sengen</h2>
+        </header>
+        <figure class="photo">
+          <span class="photo-fallback" aria-hidden="true">🥐</span>
+          <img src="images/breakfast.jpg" alt="Frokosten servert i sengen" loading="lazy">
+        </figure>
+        <p>En prinsesse fortjener frokost på sengen, hva skal det være?</p>
+        <p class="sign">– med klem</p>
+      </div>
+      <div class="lid" aria-hidden="true">
+        <div class="lid-inner">
+          <div class="bow">
+            <span class="loop l"></span><span class="loop r"></span>
+            <span class="tail l"></span><span class="tail r"></span>
+            <span class="knot"></span>
+          </div>
+          <span class="lock-label">🔒 Åpnes kl. 10:00</span>
+          <span class="countdown" data-countdown></span>
+          <span class="dress-chip">👕 Antrekk: den fine pyjamasen</span>
+        </div>
+      </div>
+    </button>
+  </section>
+
+  <section class="gift" id="gift-kafe" data-start="13:00" data-locked-msg="Ikke ennå! Den åpnes kl. 13:00">
+    <button class="gift-box" type="button" aria-expanded="false">
+      <div class="content">
+        <header class="content-head">
+          <div class="meta-chips">
+            <span class="time-chip">13:00 – 16:00</span>
+            <span class="dress-chip">👕 Antrekk: hyggelig hverdagstøy</span>
+          </div>
+          <h2>Hjemme-Café</h2>
+        </header>
+        <figure class="photo">
+          <span class="photo-fallback" aria-hidden="true">☕</span>
+          <img src="images/cafe.jpg" alt="Kaféen hjemme" loading="lazy">
+        </figure>
+        <p>Jeg åpner en liten kafé her til hus – kaffe, te, saft og hjemmelagde kaker. Vi tar oss god tid, prater, og lar ettermiddagen bare gå. Ingen bestiller, ingen kjører – bare vi og god kaffe.</p>
+        <p class="sign">– med klem</p>
+      </div>
+      <div class="lid" aria-hidden="true">
+        <div class="lid-inner">
+          <div class="bow">
+            <span class="loop l"></span><span class="loop r"></span>
+            <span class="tail l"></span><span class="tail r"></span>
+            <span class="knot"></span>
+          </div>
+          <span class="lock-label">🔒 Åpnes kl. 13:00</span>
+          <span class="countdown" data-countdown></span>
+          <span class="dress-chip">👕 Antrekk: hyggelig hverdagstøy</span>
+        </div>
+      </div>
+    </button>
+  </section>
+
+  <section class="gift" id="gift-middag" data-start="16:00" data-locked-msg="Ikke ennå! Den åpnes kl. 16:00">
+    <button class="gift-box" type="button" aria-expanded="false">
+      <div class="content">
+        <header class="content-head">
+          <div class="meta-chips">
+            <span class="time-chip">16:00 – 19:00</span>
+            <span class="dress-chip">👕 Antrekk: Fint, men pass deg for været!</span>
+          </div>
+          <h2>Middagen</h2>
+        </header>
+        <figure class="photo">
+          <span class="photo-fallback" aria-hidden="true">🍷</span>
+          <img src="images/dinner.jpg" alt="Middagen" loading="lazy">
+        </figure>
+        <p>Er du sulten? Jeg og! La meg lage deg en deilig middag!</p>
+        <p class="sign">– med klem</p>
+      </div>
+      <div class="lid" aria-hidden="true">
+        <div class="lid-inner">
+          <div class="bow">
+            <span class="loop l"></span><span class="loop r"></span>
+            <span class="tail l"></span><span class="tail r"></span>
+            <span class="knot"></span>
+          </div>
+          <span class="lock-label">🔒 Åpnes kl. 16:00</span>
+          <span class="countdown" data-countdown></span>
+          <span class="dress-chip">👕 Antrekk: Fint, men pass deg for været!</span>
+        </div>
+      </div>
+    </button>
+  </section>
+
+  <section class="gift" id="gift-latter" data-start="19:00" data-locked-msg="Ikke ennå! Den åpnes kl. 19:00">
+    <button class="gift-box" type="button" aria-expanded="false">
+      <div class="content">
+        <header class="content-head">
+          <div class="meta-chips">
+            <span class="time-chip">19:00 – 22:00</span>
+            <span class="dress-chip">👕 Antrekk: stilfull hverdagstøy</span>
+          </div>
+          <h2>Standup på Latter</h2>
+        </header>
+        <figure class="photo">
+          <span class="photo-fallback" aria-hidden="true">🎤</span>
+          <img src="images/comedy.jpg" alt="Standup på Latter" loading="lazy">
+        </figure>
+        <p>Etter middagen: latter. Bokstavelig talt. Vi tar oss en standup-forestilling på Latter – og hvem vet, kanskje blir det den beste delen av dagen.</p>
+        <p class="sign">– med klem</p>
+      </div>
+      <div class="lid" aria-hidden="true">
+        <div class="lid-inner">
+          <div class="bow">
+            <span class="loop l"></span><span class="loop r"></span>
+            <span class="tail l"></span><span class="tail r"></span>
+            <span class="knot"></span>
+          </div>
+          <span class="lock-label">🔒 Åpnes kl. 19:00</span>
+          <span class="countdown" data-countdown></span>
+          <span class="dress-chip">👕 Antrekk: stilfull hverdagstøy</span>
+        </div>
+      </div>
+    </button>
+  </section>
+
+  <section class="gift secret" id="gift-hemmelighet" data-start="22:00" data-locked-msg="Ikke ennå … hold ut til kl. 22:00 😉">
+    <button class="gift-box" type="button" aria-expanded="false">
+      <div class="content">
+        <header class="content-head">
+          <div class="meta-chips">
+            <span class="time-chip">22:00 – …</span>
+            <span class="dress-chip">👕 Antrekk: så lite som mulig 😉</span>
+          </div>
+          <h2>Klemmer, lys &amp; xxx</h2>
+        </header>
+        <figure class="photo">
+          <span class="photo-fallback" aria-hidden="true">🕯️</span>
+          <img src="images/secret.jpg" alt="Den siste gaven" loading="lazy">
+        </figure>
+        <p>Den siste gaven – og kanskje den aller beste. Klemmer, stearinlys i alle retninger, og litt ... Velkommen til hovedloten søta.</p>
+        <p class="sign">– med nuss</p>
+      </div>
+      <div class="lid" aria-hidden="true">
+        <div class="lid-inner">
+          <div class="bow">
+            <span class="loop l"></span><span class="loop r"></span>
+            <span class="tail l"></span><span class="tail r"></span>
+            <span class="knot"></span>
+          </div>
+          <span class="lock-label">🔒 Åpnes etter kl. 22:00</span>
+          <span class="countdown" data-countdown></span>
+          <span class="dress-chip">👕 Antrekk: så lite som mulig 😉</span>
+        </div>
+      </div>
+    </button>
+  </section>
+</main>
+
+<footer class="footer">
+  <button class="letter" id="letter-btn" hidden>♥ Les brevet igjen</button>
+  <button class="reset" id="reset" type="button">↺ Nullstill gavene</button>
+  <p>Laget med <span class="heart">♥</span> og litt kode – god fornøyelse!</p>
+</footer>
+
+<div class="finale" id="finale" role="dialog" aria-modal="true" aria-hidden="true" aria-label="Hovedlotten">
+  <div class="finale-hearts" id="finale-hearts" aria-hidden="true"></div>
+  <div class="finale-card">
+    <button class="finale-close" id="finale-close" type="button" aria-label="Lukk brevet">✕</button>
+    <p class="finale-eyebrow">Hovedlotten</p>
+    <h2 class="finale-greeting">Kjære Josefine,</h2>
+    <p class="finale-body">Du har tålt hele tolv timer sammen med meg. Fra frokost i sengen, til kakene ved kafébordet, til god mat, til en kveld der vi bare ikke vil slutte å le.</p>
+    <p class="finale-body">Og det er ikke over ennå. For hovedlotten var aldri noe sted å være. Den er en person. Og den personen er deg.</p>
+    <p class="finale-body">Takk for at du sier ja på alt. Spesielt den siste.</p>
+    <p class="finale-sign">Alt mitt,<br>– meg</p>
+  </div>
+</div>
+
+<button class="klemme-fab" id="klemme-btn" type="button">♥ Mens du venter</button>
+<div class="klemme-layer" id="klemme-layer" aria-hidden="true"></div>
+
+<div class="lockscreen" id="lockscreen">
+  <div class="hearts" aria-hidden="true">
+    <span style="left:8%; animation-delay:-2s; font-size:18px">♥</span>
+    <span style="left:24%; animation-delay:-7s; font-size:14px">♥</span>
+    <span style="left:40%; animation-delay:-4s; font-size:22px">♥</span>
+    <span style="left:57%; animation-delay:-9s; font-size:16px">♥</span>
+    <span style="left:72%; animation-delay:-1s; font-size:20px">♥</span>
+    <span style="left:86%; animation-delay:-6s; font-size:14px">♥</span>
+    <span style="left:94%; animation-delay:-3.5s; font-size:18px">♥</span>
+  </div>
+  <div class="lock-inner">
+    <p class="lock-eyebrow">Den store dagen</p>
+    <h1 class="lock-title">Kjære <span class="script">Josefine</span>,</h1>
+    <p class="lock-sub" id="lock-sub">Denne siden er pakket inn til dagen vår. Den slår opp om:</p>
+    <div class="lock-grid" id="lock-grid">
+      <div class="lock-cell"><span id="lock-d">–</span><small>dager</small></div>
+      <div class="lock-cell"><span id="lock-h">–</span><small>timer</small></div>
+      <div class="lock-cell"><span id="lock-m">–</span><small>minutter</small></div>
+      <div class="lock-cell"><span id="lock-s">–</span><small>sekunder</small></div>
+    </div>
+    <button class="lock-enter" id="lock-enter" type="button" hidden>♥ Den er slakt – trykk for å komme inn</button>
+  </div>
+</div>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+<script src="app.js"></script>
+</body>
+</html>
