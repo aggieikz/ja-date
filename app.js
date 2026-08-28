@@ -3,24 +3,17 @@
   "use strict";
 
   const KEY = "date-gifts-opened-v1";
-  const DAY_END = 8 * 60; // før kl. 08 regnes som "dagen er over" (alt forblir åpnet)
   const UNLOCKED_LABEL = "✨ Trykk for å åpne";
   const gifts = Array.from(document.querySelectorAll(".gift"));
   const progressEl = document.getElementById("progress");
   const toastEl = document.getElementById("toast");
   const total = gifts.length;
 
-  const toMinutes = (h) => {
+  // Dagen gavene venter på. Alt etterpå regnes som "dagen er over" (alt åpent).
+  const GIFT_DAY = new Date(2026, 7, 29);
+  const giftStamp = (h) => {
     const [hh, mm] = h.split(":").map(Number);
-    return hh * 60 + (mm || 0);
-  };
-  const nowMinutes = () => {
-    const d = new Date();
-    return d.getHours() * 60 + d.getMinutes();
-  };
-  const startStamp = (h) => {
-    const [hh, mm] = h.split(":").map(Number);
-    const d = new Date();
+    const d = new Date(GIFT_DAY);
     d.setHours(hh, mm, 0, 0);
     return d.getTime();
   };
@@ -167,27 +160,29 @@
   function fmtRemaining(ms) {
     const min = Math.ceil(ms / 60000);
     if (min < 1) return "Klokka er i gang … 🎁";
-    const h = Math.floor(min / 60);
+    const totalH = Math.floor(min / 60);
     const m = min % 60;
-    if (h > 0) return h + " t. " + m + " min. igjen";
+    if (totalH >= 24) {
+      return Math.floor(totalH / 24) + " d. " + (totalH % 24) + " t. " + m + " min. igjen";
+    }
+    if (totalH > 0) return totalH + " t. " + m + " min. igjen";
     return m + " min. igjen";
   }
 
   function tick() {
-    const now = nowMinutes();
     const nowTs = Date.now();
     gifts.forEach((gift) => {
       const label = gift.querySelector(".lock-label");
       const cd = gift.querySelector("[data-countdown]");
+      const stamp = giftStamp(gift.dataset.start);
       const unlocked = gift.classList.contains("unlocked");
 
       if (cd && !unlocked) {
-        const rem = startStamp(gift.dataset.start) - nowTs;
-        cd.textContent = rem <= 0 ? "Klokka er i gang … 🎁" : fmtRemaining(rem);
+        cd.textContent = nowTs >= stamp ? "Klokka er i gang … 🎁" : fmtRemaining(stamp - nowTs);
       }
 
       if (unlocked) return;
-      if (now >= toMinutes(gift.dataset.start) || now < DAY_END) {
+      if (nowTs >= stamp) {
         const wasOpened = gift.classList.contains("opened");
         gift.classList.add("unlocked");
         if (label && !wasOpened) label.textContent = UNLOCKED_LABEL;
