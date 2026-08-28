@@ -199,7 +199,7 @@
 
   // ============ Låseskjerm til dagen ============
   const LOCK_KEY = "date-lockscreen-entered-v1";
-  const DATE_START = new Date(2026, 7, 27, 0, 0, 0).getTime(); // dagen: 27. august
+  const DATE_START = new Date(2026, 7, 28, 18, 35, 0).getTime(); // dagen: 27. august
   const lockEl = document.getElementById("lockscreen");
   const lockSub = document.getElementById("lock-sub");
   const lockGrid = document.getElementById("lock-grid");
